@@ -1,5 +1,5 @@
 
-// If last string in URL matches this, do something
+/* If last string in URL matches this, do something */
 var url = window.location.href;
 
 if (getLastPart(url) === "articles") {
@@ -13,8 +13,15 @@ function getLastPart(url) {
         parts[parts.length - 2]);
 }
 
+//Alternately, you can use regex to validate the string
 
-// Fix sticky header
+function isAction (url) {
+    return /\/articles\/$/.test(url)
+}
+
+
+
+/* Fix sticky header */
 var content = document.querySelector('#main-content');
 var header = document.querySelector('#placeholder');
 
@@ -29,7 +36,8 @@ if (content && header) {
 }
 
 
-// If URL does not contain this string, do somethingjQuery(function() {
+/* If URL does not contain this string, do something */
+jQuery(function() {
     $('.imagecontainer').on('click', function() {
         setTimeout(function() {
             $(document).ready(function() {
@@ -42,7 +50,7 @@ if (content && header) {
 });
 
 
-// Add class to first two li elements on click
+/* Add class to first two li elements on click */
 jQuery(function(){
   $(".imagecontainer").on('click', function() {
       setTimeout(function(){

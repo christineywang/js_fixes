@@ -1,0 +1,5 @@
+
+/* Add outline to all elements for debugging */
+* {
+ outline: 1px solid red;
+}

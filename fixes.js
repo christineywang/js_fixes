@@ -60,6 +60,29 @@ jQuery(function(){
 });
 
 
+/* If click into main gallery, do something; when click out, revert changes */
+jQuery(function() {
+    // If click into gallery, fix the main content
+    $('.gallery.gallery_3by2').on('click', function() {
+        setTimeout(function() {
+            $(document).ready(function() {
+                if ($('.simsd-overlay').css('display') == 'block') {
+                    $('.acom-page-main-content').css('position', 'fixed');
+                    $('.simsd-overlay').css('height', '100%');
+                }
+            });
+        }, 250);
+        // Undo property values if click out of gallery
+        setTimeout(function() {
+            $('.simsd-overlay, .simsd-container').click(function() {
+                $('.acom-page-main-content').css('position', 'relative');
+            });
+        }, 300);
+
+    })
+});
+
+
 /* Testing the click event */
 $('#someButton').click(function() {
   console.log('#someButton was clicked');

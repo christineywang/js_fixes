@@ -58,3 +58,10 @@ jQuery(function(){
       }, 250)
   })
 });
+
+
+/* Testing the click event */
+$('#someButton').click(function() {
+  console.log('#someButton was clicked');
+  // do something
+});

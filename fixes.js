@@ -88,3 +88,8 @@ $('#someButton').click(function() {
   console.log('#someButton was clicked');
   // do something
 });
+
+
+/* Adding a class to an element */
+var noAds = document.querySelector('.existing-class');
+noAds.classList.add('new-class');

@@ -82,6 +82,38 @@ jQuery(function() {
     })
 });
 
+/* Alternate to the above */
+$(document).ready(function() {
+    // If click into gallery, fix the main content
+    $('.gallery.gallery_3by2').on('click', function() {
+        if ($('.simsd-overlay').css('display') == 'block') {
+            $('.acom-page-main-content').css('position', 'fixed');
+            $('.simsd-overlay').css('height', '100%');
+        }
+        // Undo property values if click out of gallery
+        $('.simsd-overlay, .simsd-container').click(function() {
+            $('.acom-page-main-content').css('position', 'relative');
+        });
+    })
+});
+
+$(document).ready(function() {
+    // If click into gallery, fix the main content
+    $('.gallery.gallery_3by2').on('click', function() {
+        setTimeout(function () {
+            if ($('.simsd-overlay').css('display') == 'block') {
+                $('.acom-page-main-content').css('position', 'fixed');
+                $('.simsd-overlay').css('height', '100%');
+            }
+            // Undo property values if click out of gallery
+            $('.simsd-overlay, .simsd-container').click(function() {
+                $('.acom-page-main-content').css('position', 'relative');
+            });
+        }, 10);
+    })
+});
+
+
 
 /* Testing the click event */
 $('#someButton').click(function() {

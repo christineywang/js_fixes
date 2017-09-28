@@ -150,7 +150,7 @@ $(document).ready(function() {
 });
 
 
-/* Follow the user behavior. If a script doesn't work, make sure you are folloing the user path to get there--which may be a click and then another click */
+/* Follow the user behavior. If a script doesn't work, make sure you are following the user path to get there--which may be a click and then another click */
 $(document).ready(function() {
     document.querySelector(".btn.btn-view-large").addEventListener("click", function() {
         setTimeout(function() {

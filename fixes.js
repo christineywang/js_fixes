@@ -125,3 +125,26 @@ $('#someButton').click(function() {
 /* Adding a class to an element */
 var noAds = document.querySelector('.existing-class');
 noAds.classList.add('new-class');
+
+
+
+/* This solution from one of our solutions engineers finds the image that is in the viewport for slideshow galleries and adds an active class */
+$(document).ready(function() {
+ //add active class to current image
+ var currentImgTitle = $('.gallery_title h3 a')[0].innerText;
+ $(".images img").filter("[title='" + currentImgTitle + "']").addClass('active');
+   //remove and add active class to next image
+   $('div.next').on('click', function() {
+     var currentImgTitle = $('.gallery_title h3 a')[0].innerText;
+     var currentIndex = $(".images img").filter("[title='" + currentImgTitle + "']").index();
+     var nextIndex = currentIndex + 1;
+     $('.images').find('img').removeClass('active').eq(nextIndex).addClass('active');
+   });
+ //remove and add active class to previous image
+   $('div.prev').on('click', function() {
+     var currentImgTitle = $('.gallery_title h3 a')[0].innerText;
+     var currentIndex = $(".images img").filter("[title='" + currentImgTitle + "']").index();
+     var prevIndex = currentIndex - 1;
+     $('.images').find('img').removeClass('active').eq(prevIndex).addClass('active');
+   });
+});

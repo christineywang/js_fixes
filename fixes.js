@@ -160,3 +160,60 @@ $(document).ready(function() {
         }, 250);
     });
 });
+
+
+
+
+// Reference: https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+/* Check if an element is visible on the page. If so, destroy our services. */
+function Utils() {}
+
+Utils.prototype = {
+    constructor: Utils,
+    isElementInView: function(element, fullyInView) {
+        var pageTop = $(window).scrollTop();
+        var pageBottom = pageTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        var elementBottom = elementTop + $(element).height();
+
+        if (fullyInView === true) {
+            return ((pageTop < elementTop) && (pageBottom > elementBottom));
+        } else {
+            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+        }
+    }
+};
+
+var Utils = new Utils();
+var isElementInView = Utils.isElementInView($('.Billboard-ad'), false);
+if (isElementInView) {
+    top.GUMGUM.Bean.fire(top.GUMGUM.container, 'destroy');
+}
+
+/* On scroll, we assume the element is off the page. Load our code but run this function only once. */
+$(window).one('scroll', function() {
+    var a, b = "b65e2fcd",
+        c = "https://js.gumgum.com/services.js",
+        d = top,
+        e = "script",
+        f = d.document,
+        g = f.getElementsByTagName(e)[0],
+        h = d.XMLHttpRequest || d.XDomainRequest,
+        i = function(a) {
+            var b = f.createElement(e);
+            b.src = a, b.async = !0, g.parentNode.insertBefore(b, g)
+        },
+        j = function() {
+            d.clearTimeout(a)
+        };
+    return d.ggv2id = b, h ? (h = new h, h.open("GET", c), h.onload = function() {
+        j();
+        try {
+            (d.execScript || function(a) {
+                d.eval.call(d, a)
+            })(h.responseText)
+        } catch (a) {}
+    }, a = d.setTimeout(function() {
+        h.abort()
+    }, 3e3), void h.send()) : i(c)
+});

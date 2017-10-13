@@ -217,3 +217,51 @@ $(window).one('scroll', function() {
         h.abort()
     }, 3e3), void h.send()) : i(c)
 });
+
+
+
+/* From one of our solutions engineers */
+/* Adjust IS when image has variable overlay text */
+var marginCalc = function(){
+  var overlayTxt = parseInt($('.gallery__utility').height());
+  var divHeight = parseInt($('.gallery__main').height());
+
+ // need load event to get image height
+  var slideImg =
+    $('.slides__image.active .slides__image-inner img').bind('load', function() {
+    parseInt($(this).height());
+  });
+  // note: no needs parselnt?
+  var imgHeight = parseInt(slideImg.height());
+
+  // divided by 2 to get margin bottom only
+  var extraHeight = (divHeight - imgHeight) /2
+  var marginTop = -(overlayTxt - extraHeight)
+
+  console.log(overlayTxt +"-"+ extraHeight + marginTop)
+  return marginTop;
+};
+if(marginCalc() < 51){
+
+  var ua = navigator.userAgent;
+
+  if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+      //$('.gallery__slides-wrapper').addClass("ggnoads");
+        win.ggevents = win.ggevents || []; // MUST BE win, is an alias
+        win.ggevents.push({
+             'inimage.load': function (data) {
+
+               $('span[id^="GGADad_ii_"]').css('margin-top', marginCalc() + "px");
+             }
+
+         });
+         $(".gallery.module").on('click',function(){
+
+           if ($(".gallery.module").hasClass("gallery--ui-tap")) {
+             $('span[id^="GGADad_ii_"]').css('margin-top',"0");
+           }else {
+             $('span[id^="GGADad_ii_"]').css('margin-top', marginCalc() + "px");
+           }
+         });
+    }
+}

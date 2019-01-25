@@ -1,5 +1,5 @@
 
-/* If last string in URL matches this, do something */
+// If last string in URL matches this, do something 
 var url = window.location.href;
 
 if (getLastPart(url) === "articles") {
@@ -13,15 +13,14 @@ function getLastPart(url) {
         parts[parts.length - 2]);
 }
 
-//Alternately, you can use regex to validate the string
-
+// Alternately, you can use regex to validate the string
 function isAction (url) {
     return /\/articles\/$/.test(url)
 }
 
 
 
-/* Fix sticky header */
+// Fix sticky header 
 var content = document.querySelector('#main-content');
 var header = document.querySelector('#placeholder');
 
@@ -36,7 +35,7 @@ if (content && header) {
 }
 
 
-/* If URL does not contain this string, do something */
+// If URL does not contain this string, do something 
 jQuery(function() {
     $('.imagecontainer').on('click', function() {
         setTimeout(function() {
@@ -50,7 +49,7 @@ jQuery(function() {
 });
 
 
-/* Add class to first two li elements on click */
+// Add class to first two li elements on click 
 jQuery(function(){
   $(".imagecontainer").on('click', function() {
       setTimeout(function(){
@@ -60,7 +59,7 @@ jQuery(function(){
 });
 
 
-/* If click into main gallery, do something; when click out, revert changes */
+// If click into main gallery, do something; when click out, revert changes 
 jQuery(function() {
     // If click into gallery, fix the main content
     $('.gallery.gallery_3by2').on('click', function() {
@@ -78,11 +77,10 @@ jQuery(function() {
                 $('.acom-page-main-content').css('position', 'relative');
             });
         }, 300);
-
     })
 });
 
-/* Alternate to the above */
+// Alternative to the above 
 $(document).ready(function() {
     // If click into gallery, fix the main content
     $('.gallery.gallery_3by2').on('click', function() {
@@ -115,20 +113,21 @@ $(document).ready(function() {
 
 
 
-/* Testing the click event */
+// Testing the click event 
 $('#someButton').click(function() {
   console.log('#someButton was clicked');
   // do something
 });
 
 
-/* Adding a class to an element */
+// Adding a class to an element 
 var noAds = document.querySelector('.existing-class');
 noAds.classList.add('new-class');
 
 
 
-/* This solution from one of our solutions engineers finds the image that is in the viewport for slideshow galleries and adds an active class */
+/* This solution from one of our solutions engineers finds the image 
+that is in the viewport for slideshow galleries and adds an active class */
 $(document).ready(function() {
  //add active class to current image
  var currentImgTitle = $('.gallery_title h3 a')[0].innerText;
@@ -150,7 +149,8 @@ $(document).ready(function() {
 });
 
 
-/* Follow the user behavior. If a script doesn't work, make sure you are following the user path to get there--which may be a click and then another click */
+/* Follow the user behavior. If a script doesn't work, make sure you are following 
+the user path to get there--which may be a click and then another click */
 $(document).ready(function() {
     document.querySelector(".btn.btn-view-large").addEventListener("click", function() {
         setTimeout(function() {
@@ -165,7 +165,7 @@ $(document).ready(function() {
 
 
 // Reference: https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
-/* Check if an element is visible on the page. If so, destroy our services. */
+// Check if an element is visible on the page. If so, destroy our services. 
 function Utils() {}
 
 Utils.prototype = {
@@ -190,7 +190,7 @@ if (isElementInView) {
     top.GUMGUM.Bean.fire(top.GUMGUM.container, 'destroy');
 }
 
-/* On scroll, we assume the element is off the page. Load our code but run this function only once. */
+// On scroll, we assume the element is off the page. Load our code but run this function only once. 
 $(window).one('scroll', function() {
     var a, b = "b65e2fcd",
         c = "https://js.gumgum.com/services.js",
@@ -220,8 +220,8 @@ $(window).one('scroll', function() {
 
 
 
-/* From one of our solutions engineers */
-/* Adjust IS when image has variable overlay text */
+// From one of our solutions engineers 
+// Adjust in-screen ad when image has variable overlay text
 var marginCalc = function(){
   var overlayTxt = parseInt($('.gallery__utility').height());
   var divHeight = parseInt($('.gallery__main').height());
